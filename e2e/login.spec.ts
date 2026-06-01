@@ -1,15 +1,26 @@
-import { test, expect } from '@playwright/test';
+import { LoginPage } from './support/loginPage';
+import { test, expect } from './fixtures/baseData';
 
-test('Back Office Login', async ({ page }) => {
-  await page.goto('https://stagingcis.lendingwise.com/login/backoffice');
+test('Valid Login', async ({ page, validUser }) => {
+  const loginPage = new LoginPage(page);
 
-  await page.locator('#userName').fill('vaibhavp@testrig.co.in');
-  await page.locator('input[type="password"]').fill('vsp212303');
-
-  await page.getByRole('button').click();
-
-  await page.waitForLoadState('networkidle');
+  await loginPage.navigate();
+  await loginPage.login(
+    validUser.username,
+    validUser.password
+  );
 
   await expect(page).not.toHaveURL(/login/);
+});
 
+test('Invalid Login', async ({ page, invalidUser }) => {
+  const loginPage = new LoginPage(page);
+
+  await loginPage.navigate();
+  await loginPage.login(
+    invalidUser.username,
+    invalidUser.password
+  );
+
+  await expect(page.locator('body')).toContainText(/invalid|error|incorrect/i);
 });
