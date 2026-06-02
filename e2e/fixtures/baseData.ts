@@ -1,19 +1,20 @@
-
-
 import { test as base, expect } from '@playwright/test';
-import testData from '../testData/testData.json';
-import user from '../../config/user.json';
+import testData from '../fixtures/testData.json';
+import env from '../../config/env';
+// import stage from '../../config/stage.json';
+// import qa from '../../config/qa.json';
+// import pre-prod from '../../config/pre-prod.json';
 
 const { invalidUser } = testData;
 
 type TestFixtures = {
-  validUser: typeof user;
+  validUser: typeof env;
   invalidUser: typeof invalidUser;
 };
 
 export const test = base.extend<TestFixtures>({
   validUser: async ({ }, use) => {
-    await use(user);
+    await use(env);
   },
 
   invalidUser: async ({ }, use) => {

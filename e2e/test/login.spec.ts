@@ -1,7 +1,7 @@
 
 import { test, expect } from '../fixtures/baseData';
 import { LoginPage } from '../page/LoginPage';
-import testData from '../testData/testData.json';
+import testData from '../fixtures/testData.json';
 
 test.describe('Login Tests', () => {
 
@@ -13,16 +13,6 @@ test.describe('Login Tests', () => {
     await expect(loginPage.passwordInput()).toHaveAttribute('type', 'password');
   });
 
-  test('Valid Login', async ({ page, validUser }) => {
-    const loginPage = new LoginPage(page);
-
-    await loginPage.navigate();
-    await loginPage.fillUseremail(validUser.useremail);
-    await loginPage.fillPassword(validUser.password);
-    await loginPage.clickLogin();
-
-    await expect(page).toHaveURL(/dashboard/i);
-  });
 
   test('Invalid Login', async ({ page, invalidUser }) => {
     const loginPage = new LoginPage(page);
@@ -49,4 +39,15 @@ test.describe('Login Tests', () => {
 
     await expect(useremailError).toHaveText('Please Enter Valid Email');
   })
+
+  test('Valid Login', async ({ page, validUser }) => {
+    const loginPage = new LoginPage(page);
+
+    await loginPage.navigate();
+    await loginPage.fillUseremail(validUser.useremail);
+    await loginPage.fillPassword(validUser.password);
+    await loginPage.clickLogin();
+    await expect(page).toHaveURL(/dashboard/i);
+  });
+
 })
