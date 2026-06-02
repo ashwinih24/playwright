@@ -1,15 +1,19 @@
-import stage from './stage.json';
-import qa from './qa.json';
+import dev from './dev.json';
 import preProd from './pre-prod.json';
+import stagecis from './stagecis.json';
+import stagedave from './stagedave.json';
+import qa from './qa.json';
 
-const envName = process.env.TEST_ENV || 'stage';
+const envName = process.env.TEST_ENV || 'stagecis';
 
 const envMap = {
-    stage,
-    qa,
+    dev,
     'pre-prod': preProd,
+    stagecis,
+    stagedave,
+    qa,
 };
 
-const env = envMap[envName as keyof typeof envMap] ?? stage;
+const env = envMap[envName as keyof typeof envMap] ?? stagecis;
 
 export default env;

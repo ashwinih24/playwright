@@ -8,13 +8,13 @@ import env from '../../config/env';
 const { invalidUser } = testData;
 
 type TestFixtures = {
-  validUser: typeof env;
+  validUser: typeof env.UserOne;
   invalidUser: typeof invalidUser;
 };
 
 export const test = base.extend<TestFixtures>({
   validUser: async ({ }, use) => {
-    await use(env);
+    await use(env.UserOne);
   },
 
   invalidUser: async ({ }, use) => {

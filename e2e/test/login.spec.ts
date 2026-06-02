@@ -44,7 +44,7 @@ test.describe('Login Tests', () => {
     const loginPage = new LoginPage(page);
 
     await loginPage.navigate();
-    await loginPage.fillUseremail(validUser.useremail);
+    await loginPage.fillUseremail(validUser.username);
     await loginPage.fillPassword(validUser.password);
     await loginPage.clickLogin();
     await expect(page).toHaveURL(/dashboard/i);

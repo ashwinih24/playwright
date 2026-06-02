@@ -6,8 +6,13 @@ import { defineConfig, devices } from '@playwright/test';
  */
 import dotenv from 'dotenv';
 import path from 'path';
+import env from './config/env';
 
 dotenv.config({ path: path.resolve(__dirname, 'config', '.env') });
+
+const envConfig = env;
+process.env.BASE_URL = envConfig.apiBaseUrl;
+process.env.APP_URL = envConfig.baseUrl;
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -28,7 +33,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
 
-    baseURL: process.env.BASE_URL,
+    baseURL: envConfig.baseUrl,
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 

@@ -1,10 +1,9 @@
 import { Page } from '@playwright/test';
-import env from '../../config/env'; // 
 export class LoginPage {
   constructor(private page: Page) { }
 
   async navigate() {
-    await this.page.goto(env.BASE_URL);
+    await this.page.goto('/login/backoffice');
     await this.page.waitForSelector('#userName', { state: 'visible', timeout: 30000 });
   }
 

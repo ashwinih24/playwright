@@ -1,6 +1,6 @@
 {
-    "baseUrl": "https://preprod.lendingwise.com",
-    "apiBaseUrl": "https://apipreprod.lendingwise.com/api/v3",
+    "baseUrl": "https://stagingcis.lendingwise.com",
+    "apiBaseUrl": "https://apistage.lendingwise.com/api/v3",
     "UserOne": {
         "username": "vaibhavp@testrig.co.in",
         "password": "vsp212303"
