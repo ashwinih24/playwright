@@ -1,6 +1,6 @@
 
 import { test, expect } from '../fixtures/baseData';
-import { LoginPage } from '../page/LoginPage';
+import { LoginPage } from '../support/page/LoginPage';
 import testData from '../fixtures/testData.json';
 
 test.describe('Login Tests', () => {
