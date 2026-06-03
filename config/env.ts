@@ -4,7 +4,7 @@ import stagecis from './stagecis.json';
 import stagedave from './stagedave.json';
 import qa from './qa.json';
 
-const envName = process.env.TEST_ENV || 'stagecis';
+const envName = process.env.TEST_ENV || 'dev';
 
 const envMap = {
     dev,
@@ -14,6 +14,6 @@ const envMap = {
     qa,
 };
 
-const env = envMap[envName as keyof typeof envMap] ?? stagecis;
+const env = envMap[envName as keyof typeof envMap] ?? dev;
 
 export default env;

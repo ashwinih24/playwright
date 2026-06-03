@@ -14,7 +14,7 @@ test.describe('Login Tests', () => {
   });
 
 
-  test('Invalid Login', async ({ page, invalidUser }) => {
+  test('@smoke Invalid Login', async ({ page, invalidUser }) => {
     const loginPage = new LoginPage(page);
 
     await loginPage.navigate();
@@ -30,7 +30,7 @@ test.describe('Login Tests', () => {
     await expect(page).not.toHaveURL(/dashboard/i);
   })
 
-  test("invalid email format", async ({ page }) => {
+  test('@smoke invalid email format', async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
     await loginPage.fillUseremail(testData.invalidEmail.useremail);
@@ -40,7 +40,7 @@ test.describe('Login Tests', () => {
     await expect(useremailError).toHaveText('Please Enter Valid Email');
   })
 
-  test('Valid Login', async ({ page, validUser }) => {
+  test('@sanity Valid Login', async ({ page, validUser }) => {
     const loginPage = new LoginPage(page);
 
     await loginPage.navigate();

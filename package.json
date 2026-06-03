@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test",
+    "pl:smoke-check": "playwright test --grep @smoke",
+    "pl:sanity-check": "playwright test --grep @sanity"
   },
   "keywords": [],
   "author": "",
